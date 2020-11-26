@@ -19,6 +19,11 @@ jobs:
       with:
         format: YYYYMMDD-HH
         utcOffset: "+08:00" 
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
     - name: Download artifact
       uses: dawidd6/action-download-artifact@v2
       with: 
@@ -26,17 +31,6 @@ jobs:
         workflow_conclusion: success
         name: demo.txt    
         path: .
-    - name: print path   
-      run: pwd
-    - name: print data
-      run: ls -la
-    - name: cat downloaded artifact
-      run: cat demo.txt    
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
     - run: npm install
     - name: Generate deployment package
       run: zip -r "deploy.zip-app-${{ github.sha }}-${{ steps.current-time.outputs.ISOTime }}" . -x '*.git*' 
