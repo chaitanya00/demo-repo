@@ -27,13 +27,15 @@ jobs:
     - run: npm install
     - name: Generate deployment package
       run: zip -r "deploy.zip-app-${{ github.sha }}-${{ steps.current-time.outputs.ISOTime }}" . -x '*.git*' 
-    - name: print path
+    - name: create file
       run: |
         cat >> .npmrc << EOF
         unsafe-perm=true
         EOF
     - name: print data   
       run: ls -la
+    - name: print file
+      run: cat .npmrc
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
