@@ -24,7 +24,6 @@ jobs:
       with: 
         workflow: artifact.yml
         workflow_conclusion: success
-        branch: b1
         name: demo.txt    
         path: .
     - uses: actions/checkout@v2
