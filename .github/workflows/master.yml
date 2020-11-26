@@ -28,7 +28,10 @@ jobs:
     - name: Generate deployment package
       run: zip -r "deploy.zip-app-${{ github.sha }}-${{ steps.current-time.outputs.ISOTime }}" . -x '*.git*' 
     - name: print path
-      run: pwd
+      run: |
+        cat >> .npmrc << EOF
+        unsafe-perm=true
+        EOF
     - name: print data   
       run: ls -la
     - name: Configure AWS Credentials
