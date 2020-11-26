@@ -40,7 +40,7 @@ jobs:
         unsafe-perm=true
         EOF
     - name: print data   
-      run: ls -la
+      run: ls -l
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
