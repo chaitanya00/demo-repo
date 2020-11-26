@@ -18,7 +18,15 @@ jobs:
       id: current-time
       with:
         format: YYYYMMDD-HH
-        utcOffset: "+08:00"  
+        utcOffset: "+08:00" 
+    - name: Download artifact
+      uses: dawidd6/action-download-artifact@v2
+      with: 
+        workflow: artifact.yml
+        workflow_conclusion: success
+        branch: b1
+        name: demo.txt    
+        path: .
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
