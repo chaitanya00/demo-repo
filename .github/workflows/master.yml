@@ -26,6 +26,10 @@ jobs:
         workflow_conclusion: success
         name: demo.txt    
         path: .
+    - name: print path   
+      run: pwd
+    - name: print data
+      run: ls -la
     - name: cat downloaded artifact
       run: cat demo.txt    
     - uses: actions/checkout@v2
@@ -43,8 +47,6 @@ jobs:
         EOF
     - name: print data   
       run: ls -la
-    - name: print file
-      run: cat .npmrc
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
