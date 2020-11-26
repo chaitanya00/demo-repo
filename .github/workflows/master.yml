@@ -28,9 +28,9 @@ jobs:
     - name: Generate deployment package
       run: zip -r "deploy.zip-app-${{ github.sha }}-${{ steps.current-time.outputs.ISOTime }}" . -x '*.git*' 
     - name: print path
-    - run: pwd
+      run: pwd
     - name: print data   
-    - run: ls -la
+      run: ls -la
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
